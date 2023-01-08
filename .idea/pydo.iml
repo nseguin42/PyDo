@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/pydo" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/py311/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/py311/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/.pytest_cache" />
+      <excludeFolder url="file://$MODULE_DIR$/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/logs" />
+      <excludeFolder url="file://$MODULE_DIR$/py311" />
+    </content>
+    <orderEntry type="jdk" jdkName="Pipenv (pydo) (2)" jdkType="Python SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

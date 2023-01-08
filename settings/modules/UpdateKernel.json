@@ -1,0 +1,11 @@
+{
+  "type": "ScriptRunner",
+  "name": "Update Kernel",
+  "config": {
+    "lang": "bash",
+    "script": "cd ~/kernel/linux-tkg && (yes | makepkg -sif)",
+    "dependsOn": [
+    ],
+    "interactive": true
+  }
+}

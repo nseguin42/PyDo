@@ -1,0 +1,10 @@
+{
+  "type": "ScriptRunner",
+  "name": "Hello World",
+  "config": {
+    "lang": "bash",
+    "script": "echo \"Hello World!\"",
+    "dependsOn": [
+    ]
+  }
+}

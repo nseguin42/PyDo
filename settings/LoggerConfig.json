@@ -1,0 +1,6 @@
+{
+  "filename": "{date}.log",
+  "log_dir": "logs",
+  "level": "DEBUG",
+  "logs_to_keep": 5
+}

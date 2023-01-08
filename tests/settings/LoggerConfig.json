@@ -1,0 +1,6 @@
+{
+  "filename": "test.log",
+  "log_dir": "tests/logs",
+  "level": "DEBUG",
+  "logs_to_keep": 1
+}

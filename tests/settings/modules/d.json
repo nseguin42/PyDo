@@ -1,0 +1,11 @@
+{
+  "type": "ScriptRunner",
+  "name": "Module D",
+  "config": {
+    "script": "echo D",
+    "lang": "bash",
+    "dependsOn": [
+      "Module E"
+    ]
+  }
+}
