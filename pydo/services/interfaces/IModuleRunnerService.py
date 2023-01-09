@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 from typing import List
 
-from pydo.models.Module import Module
+from modules.Module import Module
 from pydo.services.interfaces.IConfigurableService import IConfigurableService
 
 

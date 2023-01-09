@@ -1,6 +1,6 @@
 import dataclasses
 
-from pydo.models.interfaces.INode import INode
+from graphs.interfaces.INode import INode
 
 
 @dataclasses.dataclass

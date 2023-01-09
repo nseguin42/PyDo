@@ -1,4 +1,3 @@
-import logging
 import threading
 import uuid
 from abc import ABCMeta, abstractmethod
@@ -7,7 +6,7 @@ from uuid import UUID
 
 from pydo.config.interfaces.IConfigurable import IConfigurable
 from pydo.config.ModuleConfig import ModuleConfig
-from pydo.services.interfaces.WithLogging import WithLogging
+from utilities.WithLogging import WithLogging
 
 
 class Module(IConfigurable, WithLogging, metaclass=ABCMeta):

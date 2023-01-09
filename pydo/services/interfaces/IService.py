@@ -1,6 +1,6 @@
 from abc import ABCMeta
 
-from pydo.services.interfaces.WithLogging import WithLogging
+from utilities.WithLogging import WithLogging
 
 
 class IService(WithLogging, metaclass=ABCMeta):

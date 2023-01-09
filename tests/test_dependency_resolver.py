@@ -1,7 +1,7 @@
 import unittest
 
-from pydo.models.BasicNode import BasicNode
-from pydo.models.DirectedAcyclicGraph import DirectedAcyclicGraph
+from graphs.BasicNode import BasicNode
+from graphs.DirectedAcyclicGraph import DirectedAcyclicGraph
 
 
 class TestDependencyResolver(unittest.TestCase):

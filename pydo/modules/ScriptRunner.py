@@ -2,7 +2,7 @@ import asyncio
 import subprocess
 
 from pydo.config.ScriptRunnerConfig import ScriptRunnerConfig
-from pydo.models.Module import Module
+from modules.Module import Module
 from pydo.models.Script import Script
 
 

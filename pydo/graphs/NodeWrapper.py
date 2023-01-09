@@ -1,5 +1,5 @@
-from pydo.models.interfaces.INode import INode
-from pydo.models.Module import Module
+from graphs.interfaces.INode import INode
+from modules.Module import Module
 
 
 class NodeWrapper(INode):

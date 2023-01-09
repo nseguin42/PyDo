@@ -1,5 +1,5 @@
-from pydo.models import Module
-from pydo.models.DependencyGraph import DependencyGraph
+from modules import Module
+from graphs.DependencyGraph import DependencyGraph
 from pydo.services.interfaces import IConfigService
 from pydo.services.interfaces.IConfigurableService import IConfigurableService
 

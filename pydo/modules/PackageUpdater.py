@@ -1,7 +1,7 @@
 from pydo.config.PackageUpdaterConfig import PackageUpdaterConfig
-from pydo.models.Module import Module
+from modules.Module import Module
 from pydo.modules.ScriptRunner import ScriptRunner
-from pydo.services.interfaces.WithLogging import WithLogging
+from utilities.WithLogging import WithLogging
 
 
 class PackageUpdater(ScriptRunner, Module, WithLogging):

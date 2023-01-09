@@ -6,7 +6,7 @@ import orjson
 from pydo.config.Config import Config
 from pydo.config.ModuleConfig import ModuleConfig
 from pydo.services.interfaces.IConfigService import IConfigService
-from pydo.services.interfaces.WithLogging import WithLogging
+from utilities.WithLogging import WithLogging
 
 
 @dataclasses.dataclass

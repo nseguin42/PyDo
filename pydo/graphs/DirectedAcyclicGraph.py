@@ -1,8 +1,8 @@
-from typing import Generator, List, Set
+from typing import Generator, Set
 
 import nographs
 
-from pydo.models.interfaces import INode
+from graphs.interfaces import INode
 
 
 class DirectedAcyclicGraph:
