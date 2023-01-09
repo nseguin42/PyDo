@@ -75,4 +75,3 @@ class WithLogging(metaclass=ABCMeta):
     def error(self, message: str):
         logger = self.logger()
         logger.error(f"{Colors.FAIL}{message}{Colors.ENDC}")
-

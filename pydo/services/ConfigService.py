@@ -3,8 +3,8 @@ from pathlib import Path
 
 import orjson
 
-from pydo.config.LoggerConfig import LoggerConfig
 from pydo.config.Config import Config
+from pydo.config.LoggerConfig import LoggerConfig
 from pydo.config.ModuleConfig import ModuleConfig
 from pydo.services.interfaces.IConfigService import IConfigService
 from pydo.utilities.WithLogging import WithLogging

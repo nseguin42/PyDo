@@ -7,7 +7,7 @@
     "dependsOn": [
       "Module B",
       "Module C",
-        "Module D"
+      "Module D"
     ]
   }
 }

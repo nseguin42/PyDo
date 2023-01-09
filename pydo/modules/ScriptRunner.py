@@ -2,8 +2,8 @@ import asyncio
 import subprocess
 
 from pydo.config.ScriptRunnerConfig import ScriptRunnerConfig
-from pydo.modules.Module import Module
 from pydo.models.Script import Script
+from pydo.modules.Module import Module
 
 
 class ScriptRunner(Module):
@@ -72,6 +72,7 @@ class ScriptRunner(Module):
             line = line.decode().rstrip()
             self.info(line)
             log_list.append(line)
+
     async def log_stderr(self, stream, log_list):
         # Read lines from the stream and print them
         while True:

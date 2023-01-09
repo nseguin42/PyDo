@@ -1,5 +1,5 @@
-from pydo.config.PackageUpdaterConfig import PackageUpdaterConfig
 from modules.Module import Module
+from pydo.config.PackageUpdaterConfig import PackageUpdaterConfig
 from pydo.modules.ScriptRunner import ScriptRunner
 from utilities.WithLogging import WithLogging
 

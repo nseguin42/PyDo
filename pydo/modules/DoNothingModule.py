@@ -1,5 +1,5 @@
-from pydo.config.ModuleConfig import ModuleConfig
 from modules.Module import Module
+from pydo.config.ModuleConfig import ModuleConfig
 
 EmptyConfig: ModuleConfig = ModuleConfig({})
 

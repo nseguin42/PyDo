@@ -1,5 +1,5 @@
 from abc import ABCMeta
-from typing import Any, Hashable
+from typing import Hashable
 
 
 class IEdge(metaclass=ABCMeta):
@@ -17,4 +17,3 @@ class IEdge(metaclass=ABCMeta):
 
     def __hash__(self):
         return hash((self.source, self.target))
-

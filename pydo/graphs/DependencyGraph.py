@@ -1,6 +1,6 @@
 from pydo.graphs.DirectedAcyclicGraph import DirectedAcyclicGraph
-from pydo.modules.Module import Module
 from pydo.graphs.NodeWrapper import NodeWrapper
+from pydo.modules.Module import Module
 
 
 class DependencyGraph(DirectedAcyclicGraph):

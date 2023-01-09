@@ -1,10 +1,10 @@
 import unittest
 from pathlib import Path
 
-from pydo.services.ConfigService import ConfigService
-from pydo.services.interfaces.IConfigService import IConfigService
 from pydo.config.LoggerConfig import LoggerConfig
 from pydo.config.ModuleConfig import ModuleConfig
+from pydo.services.ConfigService import ConfigService
+from pydo.services.interfaces.IConfigService import IConfigService
 from pydo.services.ModuleLoaderService import ModuleLoaderService
 from pydo.services.ModuleRunnerService import ModuleRunnerService
 
