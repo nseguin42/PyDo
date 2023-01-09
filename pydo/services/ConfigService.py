@@ -1,7 +1,6 @@
 import dataclasses
+import json
 from pathlib import Path
-
-import orjson
 
 from pydo.config.Config import Config
 from pydo.config.LoggerConfig import LoggerConfig
@@ -41,7 +40,7 @@ class ConfigService(IConfigService):
         return Config.load(path, config_class)
 
     def save_config(self, config: Config, instance_name: str, config_dir: str = None) -> None:
-        data = orjson.dumps(config, orjson.OPT_INDENT_2)
+        data = json.dumps(config)
         path: Path = self.get_config_path(instance_name)
         writer = open(path, "w")
         writer.write(data.decode("utf-8"))
@@ -65,12 +64,6 @@ class ConfigService(IConfigService):
 
     def get_modules_dir(self) -> Path:
         return self.config_dir_path / "modules"
-
-    def get_config_from_file(self, file_path: str) -> Config:
-        with open(file_path, "r") as file:
-            config = orjson.loads(file.read())
-            config_class = self.get_config_class(config, file_path)
-            return config_class(config)
 
     def get_module_config(self, data: dict) -> ModuleConfig:
         config_class = self.get_config_class(data, data["name"])

@@ -29,10 +29,11 @@ class ModuleLoaderService(IConfigurableService):
         return self.modules
 
     def load_module_from_file(self, file_path: Path) -> Module:
-        data = json.loads(file_path.read_text())
-        module_config = self.config_service.get_module_config(data)
-        module = Module.load(module_config)
-        return module
+        with open(file_path, "r") as file:
+            data = json.loads(file.read())
+            module_config = self.config_service.get_module_config(data)
+            module = Module.load(module_config)
+            return module
 
     def register_dependencies(self):
         for module in self.modules:
