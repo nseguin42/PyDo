@@ -4,6 +4,6 @@
   "config": {
     "script": "echo E",
     "lang": "bash",
-    "dependsOn": []
+    "depends_on": []
   }
 }

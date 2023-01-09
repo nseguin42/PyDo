@@ -4,7 +4,7 @@
   "config": {
     "lang": "bash",
     "script": "cd ~/kernel/linux-tkg && (yes | makepkg -sif)",
-    "dependsOn": [
+    "depends_on": [
     ],
     "interactive": true
   }

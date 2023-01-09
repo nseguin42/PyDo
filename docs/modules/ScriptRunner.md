@@ -14,7 +14,7 @@ information about which languages are supported and how they are run.
     "lang": "bash",
     "interactive": false
   },
-  "dependsOn": []
+  "depends_on": []
 }
 ```
 
@@ -25,4 +25,4 @@ information about which languages are supported and how they are run.
 | name      | string   | The name of the module.                               | Yes      |         |
 | type      | string   | The type of the module.                               | Yes      |         |
 | script    | Script   | The script to run.                                    | Yes      |         |
-| dependsOn | string[] | The names of the modules that this module depends on. | No       | []      |
+| depends_on | string[] | The names of the modules that this module depends on. | No       | []      |

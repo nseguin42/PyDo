@@ -4,7 +4,7 @@
   "config": {
     "script": "echo D",
     "lang": "bash",
-    "dependsOn": [
+    "depends_on": [
       "Module E"
     ]
   }

@@ -23,7 +23,7 @@ This module is used to update packages. It is a wrapper around the ScriptRunner 
     "lang": "bash",
     "interactive": false
   },
-  "dependsOn": []
+  "depends_on": []
 }
 ```
 
@@ -36,4 +36,4 @@ This module is used to update packages. It is a wrapper around the ScriptRunner 
 | script                          | Script   | The script to run to update the package.                       | Yes      |         |
 | get\_installed\_version\_script | Script   | The script to run to get the installed version of the package. | Yes      |         |
 | get\_latest\_version\_script    | Script   | The script to run to get the latest version of the package.    | Yes      |         |
-| dependsOn                       | string[] | The names of the modules that this module depends on.          | No       | []      |
+| depends_on                       | string[] | The names of the modules that this module depends on.          | No       | []      |

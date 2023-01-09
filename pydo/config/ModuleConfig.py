@@ -7,7 +7,7 @@ class ModuleConfig(Config):
 
     def get_dependencies(self):
         try:
-            dependsOn = self.config["dependsOn"]
-            yield from dependsOn
+            depends_on = self.config["depends_on"]
+            yield from depends_on
         except KeyError:
             return []
