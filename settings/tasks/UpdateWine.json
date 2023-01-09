@@ -11,11 +11,11 @@
       "interactive": true
     },
     "get_latest_version_script": {
-      "script": "\"curl --silent \\\"https://api.github.com/repos/GloriousEggroll/wine-ge-custom/releases/latest\\\" |  grep '\\\"tag_name\\\":' | sed -E 's/.*\\\"([^\\\"]+)\\\".*/\\\\1/' | sed -E 's/GE-Proton.-(.*)/\\\\1/'\"",
+      "script": "curl --silent \"https://api.github.com/repos/GloriousEggroll/wine-ge-custom/releases/latest\" |  grep '\"tag_name\":' | sed -E 's/.*\"([^\"]+)\".*/\\1/' | sed -E 's/GE-Proton.-(.*)/\\1/'",
       "lang": "bash"
     },
     "get_installed_version_script": {
-      "script": "paru -Q wine-ge-lutris | sed -E 's/.*GE\\.Proton.\\.(.*)-.*/\\1/' | grep -Po '(?<=wine-ge-lutris 1:).*(?=-.*)'",
+      "script": "paru -Q wine-ge-lutris | sed -E 's/.*GE\\.Proton.\\.(.*)-.*/\\1/'",
       "lang": "bash"
     },
     "depends_on": [

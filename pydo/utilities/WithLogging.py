@@ -66,12 +66,12 @@ class WithLogging(metaclass=ABCMeta):
 
     def info(self, message: str, color: Colors = Colors.OKBLUE):
         logger = self.logger()
-        logger.info(f"{color}{message}{Colors.ENDC}")
+        logger.info(f"{color}{message.rstrip()}{Colors.ENDC}")
 
     def warn(self, message: str):
         logger = self.logger()
-        logger.warning(f"{Colors.WARNING}{message}{Colors.ENDC}")
+        logger.warning(f"{Colors.WARNING}{message.rstrip()}{Colors.ENDC}")
 
     def error(self, message: str):
         logger = self.logger()
-        logger.error(f"{Colors.FAIL}{message}{Colors.ENDC}")
+        logger.error(f"{Colors.FAIL}{message.rstrip()}{Colors.ENDC}")

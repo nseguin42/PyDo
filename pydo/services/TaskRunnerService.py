@@ -1,3 +1,4 @@
+from pydo.config.Colors import Colors
 from pydo.graphs.DependencyGraph import DependencyGraph
 from pydo.tasks import Task
 from pydo.services.interfaces import IConfigService
@@ -9,7 +10,7 @@ class TaskRunnerService(IConfigurableService):
         super().__init__(config_service)
 
     def run_all(self, tasks: list[Task]):
-        self.logger().info("Running tasks")
+        self.info(f"Running tasks: {tasks}", Colors.OKGREEN)
         graph = DependencyGraph(tasks)
 
         for task_wrapper in graph.get_traversal():
@@ -17,5 +18,5 @@ class TaskRunnerService(IConfigurableService):
             self.run(task)
 
     def run(self, task: Task):
-        self.logger().info(f"Running task: {task.name}")
+        self.info(f"Running task: {task.name}", Colors.OKGREEN)
         task.run()
