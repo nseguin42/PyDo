@@ -20,22 +20,22 @@ without notice.
 All configuration is done through .json files in the config directory `$CONFIG` (
 default: `$CONFIG = pydo/settings`).
 
-### Modules
+### Tasks
 
-Each task that PyDo can run is a module. Modules are defined in the `$CONFIG/modules` directory.
-Each module is defined by a single .json file with the minimum syntax:
+Each task that PyDo can run is a task. Tasks are defined in the `$CONFIG/tasks` directory.
+Each task is defined by a single .json file with the minimum syntax:
 
 | Property | Type   | Description             | Required | Default |
 |:---------|:-------|:------------------------|:---------|:--------|
-| name     | string | The name of the module. | Yes      |         |
-| type     | string | The type of the module. | Yes      |         |
+| name     | string | The name of the task. | Yes      |         |
+| type     | string | The type of the task. | Yes      |         |
 
 ```json
 {
-    "name": "module_name",
-    "type": "module_type"
+    "name": "task_name",
+    "type": "task_type"
 }
 ```
 
-Other properties may be required depending on the module type. See
-the [module documentation](docs/modules/Modules.md) for more information.
+Other properties may be required depending on the task type. See
+the [task documentation](docs/tasks/Tasks.md) for more information.

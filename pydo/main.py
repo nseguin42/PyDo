@@ -8,8 +8,8 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../'
 
 from pydo.services.ConfigService import ConfigService
 from pydo.services.interfaces.IConfigService import IConfigService
-from pydo.services.ModuleLoaderService import ModuleLoaderService
-from pydo.services.ModuleRunnerService import ModuleRunnerService
+from pydo.services.TaskLoaderService import TaskLoaderService
+from pydo.services.TaskRunnerService import TaskRunnerService
 
 
 def main(args):
@@ -19,19 +19,19 @@ def main(args):
     print(f"config_path: {config_path.absolute()}")
 
     config_service: IConfigService = ConfigService(config_path)
-    module_runner = ModuleRunnerService(config_service)
-    module_loader = ModuleLoaderService(config_service)
+    task_runner = TaskRunnerService(config_service)
+    task_loader = TaskLoaderService(config_service)
 
-    modules = module_loader.load_modules()
-    modules_to_run = args.modules
-    if len(modules_to_run) > 0:
-        modules = list(filter(lambda m: m.name in modules_to_run, modules))
+    tasks = task_loader.load_tasks()
+    tasks_to_run = args.tasks
+    if len(tasks_to_run) > 0:
+        tasks = list(filter(lambda m: m.name in tasks_to_run, tasks))
 
-    module_runner.run_all(modules)
+    task_runner.run_all(tasks)
 
 
 parser = argparse.ArgumentParser(description="PyDo")
-parser.add_argument("--modules", help="The modules to run (default: all)", nargs="+", default=[])
+parser.add_argument("--tasks", help="The tasks to run (default: all)", nargs="+", default=[])
 parser.add_argument("--config",
                     help="Path to config file",
                     default="settings/settings.json")

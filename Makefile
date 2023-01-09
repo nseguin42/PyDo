@@ -4,7 +4,7 @@ run:
 
 test:
 	export PYTHONPATH="$PWD/pydo; $PWD/tests"
-	pipenv run python -m unittest tests/test_modules.py
+	pipenv run python -m unittest tests/test_tasks.py
 
 clean:
 	rm -rf __pycache__

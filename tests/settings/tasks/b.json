@@ -1,15 +1,14 @@
 {
   "type": "ScriptRunner",
-  "name": "Module C",
+  "name": "Task B",
   "config": {
     "script": {
-      "script": "echo C",
+      "script": "echo B",
       "lang": "bash"
     },
     "lang": "bash",
     "depends_on": [
-      "Module D",
-      "Module E"
+      "Task D"
     ]
   }
 }

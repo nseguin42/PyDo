@@ -1,5 +1,5 @@
 from pydo.config.Config import Config
 
 
-class ModuleRunnerConfig(Config):
+class TaskLoaderConfig(Config):
     pass

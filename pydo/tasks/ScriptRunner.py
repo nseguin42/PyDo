@@ -3,10 +3,10 @@ import subprocess
 
 from pydo.config.ScriptRunnerConfig import ScriptRunnerConfig
 from pydo.models.Script import Script
-from pydo.modules.Module import Module
+from pydo.tasks.Task import Task
 
 
-class ScriptRunner(Module):
+class ScriptRunner(Task):
     config: ScriptRunnerConfig
     script: Script
 

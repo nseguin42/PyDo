@@ -1,4 +1,4 @@
-# Modules
+# Tasks
 
-- [PackageUpdater](docs/modules/PackageUpdater.md)
-- [ScriptRunner](docs/modules/ScriptRunner.md)
+- [PackageUpdater](docs/tasks/PackageUpdater.md)
+- [ScriptRunner](docs/tasks/ScriptRunner.md)

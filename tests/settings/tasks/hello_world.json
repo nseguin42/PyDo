@@ -3,7 +3,7 @@
   "name": "Hello World",
   "config": {
     "script": {
-      "script": "Hello, world!",
+      "script": "echo Hello, world!",
       "lang": "bash"
     },
     "depends_on": [

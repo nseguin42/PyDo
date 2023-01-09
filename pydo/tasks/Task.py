@@ -1,43 +1,42 @@
 import threading
 import uuid
 from abc import ABCMeta, abstractmethod
-from modulefinder import Module
 from pathlib import Path
 from typing import Self, Set
 from uuid import UUID
 
 from pydo.config.interfaces.IConfigurable import IConfigurable
-from pydo.config.ModuleConfig import ModuleConfig
-from pydo.utilities.ClassLoader import get_module_class
+from pydo.config.TaskConfig import TaskConfig
+from pydo.utilities.ClassLoader import get_task_class
 from pydo.utilities.WithLogging import WithLogging
 
 
-class Module(IConfigurable, WithLogging, metaclass=ABCMeta):
+class Task(IConfigurable, WithLogging, metaclass=ABCMeta):
     name: str
-    config: ModuleConfig
+    config: TaskConfig
     dependencies: Set[Self] = set()
     lock: threading.Lock
     _id: UUID
 
     @abstractmethod
     def __init__(self,
-                 config: ModuleConfig):
+                 config: TaskConfig):
         super().__init__(config)
         self.name = config.name
         self._id = uuid.uuid4()
 
     @staticmethod
-    def load(config: ModuleConfig) -> Module:
+    def load(config: TaskConfig):
         if config.type:
-            module_class = get_module_class(config.type)
-            return module_class(config)
+            task_class = get_task_class(config.type)
+            return task_class(config)
         else:
-            raise Exception("Module type not specified")
+            raise Exception("Task type not specified")
 
     @staticmethod
-    def load_from_file(path: Path) -> Module:
-        module = Module.load(path)
-        return module
+    def load_from_file(path: Path):
+        task = Task.load(path)
+        return task
 
     def run(self):
         pass
@@ -46,7 +45,7 @@ class Module(IConfigurable, WithLogging, metaclass=ABCMeta):
         return self._id.hex[:8]
 
     def __repr__(self):
-        return "Module: " + self.name + " (" + str(self.get_short_id() + ")")
+        return "Task: " + self.name + " (" + str(self.get_short_id() + ")")
 
     def __eq__(self, other):
         return self._id == other._id

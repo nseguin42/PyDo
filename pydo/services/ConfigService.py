@@ -4,7 +4,7 @@ from pathlib import Path
 
 from pydo.config.Config import Config
 from pydo.config.LoggerConfig import LoggerConfig
-from pydo.config.ModuleConfig import ModuleConfig
+from pydo.config.TaskConfig import TaskConfig
 from pydo.services.interfaces.IConfigService import IConfigService
 from pydo.utilities.WithLogging import WithLogging
 
@@ -53,18 +53,18 @@ class ConfigService(IConfigService):
         except KeyError:
             class_name = name
 
-        config_module = __import__(f"pydo.config.{class_name}", fromlist=[class_name])
-        return getattr(config_module, class_name)
+        config_task = __import__(f"pydo.config.{class_name}", fromlist=[class_name])
+        return getattr(config_task, class_name)
 
-    def get_enabled_modules(self) -> list[str]:
-        return self.config["enabled_modules"]
+    def get_enabled_tasks(self) -> list[str]:
+        return self.config["enabled_tasks"]
 
     def get_logger_config(self) -> LoggerConfig:
         return self.get_config("LoggerConfig", config_class=LoggerConfig)
 
-    def get_modules_dir(self) -> Path:
-        return self.config_dir_path / "modules"
+    def get_tasks_dir(self) -> Path:
+        return self.config_dir_path / "tasks"
 
-    def get_module_config(self, data: dict) -> ModuleConfig:
+    def get_task_config(self, data: dict) -> TaskConfig:
         config_class = self.get_config_class(data, data["name"])
         return config_class(data)

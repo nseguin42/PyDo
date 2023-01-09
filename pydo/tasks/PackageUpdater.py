@@ -1,10 +1,10 @@
-from modules.Module import Module
+from tasks.Task import Task
 from pydo.config.PackageUpdaterConfig import PackageUpdaterConfig
-from pydo.modules.ScriptRunner import ScriptRunner
+from pydo.tasks.ScriptRunner import ScriptRunner
 from utilities.WithLogging import WithLogging
 
 
-class PackageUpdater(ScriptRunner, Module, WithLogging):
+class PackageUpdater(ScriptRunner, Task, WithLogging):
     config: PackageUpdaterConfig
     get_installed_version_script = property(lambda self: self.config.get_installed_version_script)
     get_latest_version_script = property(lambda self: self.config.get_latest_version_script)

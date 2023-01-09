@@ -2,7 +2,7 @@ import json
 from abc import ABCMeta
 from pathlib import Path
 
-from pydo.utilities.ClassLoader import get_module_config_class
+from pydo.utilities.ClassLoader import get_task_config_class
 
 
 class Config(metaclass=ABCMeta):
@@ -26,7 +26,7 @@ class Config(metaclass=ABCMeta):
         with open(path, "r") as file:
             dict = json.loads(file.read())
             if "type" in dict:
-                config_class = get_module_config_class(dict["type"])
+                config_class = get_task_config_class(dict["type"])
 
             if config_class is None:
                 config = Config(dict)

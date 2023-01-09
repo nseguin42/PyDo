@@ -1,0 +1,14 @@
+from tasks.Task import Task
+from pydo.services.interfaces.IConfigService import IConfigService
+from pydo.services.interfaces.ITaskRunnerService import ITaskRunnerService
+
+
+class FakeTaskRunnerService(ITaskRunnerService):
+    """A fake task runner service that does nothing.
+    """
+
+    def __init__(self, config_service: IConfigService):
+        super().__init__(config_service)
+
+    def run(self, task: Task):
+        self.logger().info(f"Running task: {task.name}")

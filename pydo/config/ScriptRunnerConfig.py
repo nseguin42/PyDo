@@ -1,8 +1,8 @@
-from pydo.config.ModuleConfig import ModuleConfig
+from pydo.config.TaskConfig import TaskConfig
 from pydo.models.Script import Script
 
 
-class ScriptRunnerConfig(ModuleConfig):
+class ScriptRunnerConfig(TaskConfig):
     script: Script
 
     def __init__(self, config: dict):

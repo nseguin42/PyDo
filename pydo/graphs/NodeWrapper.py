@@ -1,14 +1,14 @@
 from pydo.graphs.interfaces.INode import INode
-from pydo.modules.Module import Module
+from pydo.tasks.Task import Task
 
 
 class NodeWrapper(INode):
-    wrapped: Module
+    wrapped: Task
 
     def get(self):
         return self.wrapped
 
-    def __init__(self, wrapped: Module):
+    def __init__(self, wrapped: Task):
         super().__init__()
         self.wrapped = wrapped
         self.targets = set((NodeWrapper(wrapped) for wrapped in wrapped.dependencies))

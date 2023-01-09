@@ -1,6 +1,6 @@
 {
   "type": "ScriptRunner",
-  "name": "Module E",
+  "name": "Task E",
   "config": {
     "script": {
       "script": "echo E",

@@ -3,7 +3,7 @@ from pathlib import Path
 
 from pydo.config.Config import Config
 from pydo.config.LoggerConfig import LoggerConfig
-from pydo.config.ModuleConfig import ModuleConfig
+from pydo.config.TaskConfig import TaskConfig
 from pydo.services.interfaces.IService import IService
 
 
@@ -18,15 +18,15 @@ class IConfigService(IService, metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def get_modules_dir(self) -> Path:
+    def get_tasks_dir(self) -> Path:
         pass
 
     @abstractmethod
-    def get_module_config(self, data: dict) -> ModuleConfig:
+    def get_task_config(self, data: dict) -> TaskConfig:
         pass
 
     @abstractmethod
-    def get_enabled_modules(self) -> list[str]:
+    def get_enabled_tasks(self) -> list[str]:
         pass
 
     @abstractmethod
