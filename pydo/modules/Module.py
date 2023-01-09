@@ -2,18 +2,14 @@ import threading
 import uuid
 from abc import ABCMeta, abstractmethod
 from modulefinder import Module
+from pathlib import Path
 from typing import Self, Set
 from uuid import UUID
 
 from pydo.config.interfaces.IConfigurable import IConfigurable
 from pydo.config.ModuleConfig import ModuleConfig
+from pydo.utilities.ClassLoader import get_module_class
 from pydo.utilities.WithLogging import WithLogging
-
-
-def get_class(name: str):
-    if name:
-        module = __import__(f"pydo.modules.{name}", fromlist=[name])
-        return getattr(module, name)
 
 
 class Module(IConfigurable, WithLogging, metaclass=ABCMeta):
@@ -33,10 +29,15 @@ class Module(IConfigurable, WithLogging, metaclass=ABCMeta):
     @staticmethod
     def load(config: ModuleConfig) -> Module:
         if config.type:
-            module_class = get_class(config.type)
+            module_class = get_module_class(config.type)
             return module_class(config)
         else:
             raise Exception("Module type not specified")
+
+    @staticmethod
+    def load_from_file(path: Path) -> Module:
+        module = Module.load(path)
+        return module
 
     def run(self):
         pass

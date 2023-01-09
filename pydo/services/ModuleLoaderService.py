@@ -1,14 +1,9 @@
-import json
 from pathlib import Path
 
+from pydo.config.Config import Config
 from pydo.modules.Module import Module
 from pydo.services.interfaces.IConfigService import IConfigService
 from pydo.services.interfaces.IConfigurableService import IConfigurableService
-
-
-def get_class(name: str):
-    module = __import__(f"pydo.modules.{name}", fromlist=[name])
-    return getattr(module, name)
 
 
 class ModuleLoaderService(IConfigurableService):
@@ -22,18 +17,15 @@ class ModuleLoaderService(IConfigurableService):
         for module_path in module_dir.iterdir():
             if not module_path.is_file():
                 continue
-            module = self.load_module_from_file(module_path)
+            module = self.load_module_from_config(module_path)
             self.modules.append(module)
 
         self.register_dependencies()
         return self.modules
 
-    def load_module_from_file(self, file_path: Path) -> Module:
-        with open(file_path, "r") as file:
-            data = json.loads(file.read())
-            module_config = self.config_service.get_module_config(data)
-            module = Module.load(module_config)
-            return module
+    def load_module_from_config(self, config_file_path: Path) -> Module:
+        module_config = Config.load(config_file_path)
+        return Module.load(module_config)
 
     def register_dependencies(self):
         for module in self.modules:

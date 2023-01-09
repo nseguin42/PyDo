@@ -18,10 +18,10 @@ class ScriptRunner(Module):
         self.run_script(self.script)
 
     def run_script(self, script: Script):
-        if script.lang == "sh" or script.lang == "bash":
+        if script.lang == "bash" or script.lang == "sh":
             return self.run_bash_script(script)
-
-        raise Exception(f"Unsupported script language: {script.lang}")
+        else:
+            raise ValueError(f"Unsupported script language: {script.lang}")
 
     async def run_bash_script_interactively(self, script: Script):
         process = await asyncio.create_subprocess_shell(
@@ -57,8 +57,8 @@ class ScriptRunner(Module):
         return process.stdout
 
     def run_bash_script(self, script: Script):
-        self.info(script.script)
-        if self.config.is_interactive:
+        self.info("$ " + script.script)
+        if script.interactive:
             return asyncio.run(self.run_bash_script_interactively(script))
         else:
             return self.run_bash_script_noninteractively(script)

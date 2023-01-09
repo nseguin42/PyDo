@@ -2,12 +2,14 @@ import json
 from abc import ABCMeta
 from pathlib import Path
 
+from pydo.utilities.ClassLoader import get_module_config_class
+
 
 class Config(metaclass=ABCMeta):
     config: dict
+    path: Path
     type: str
     name: str
-    config_dir: str = ""
 
     def __init__(self, config: dict):
         if "type" in config:
@@ -21,15 +23,21 @@ class Config(metaclass=ABCMeta):
 
     @staticmethod
     def load(path: Path, config_class=None):
-        print("Loading config from " + str(path))
         with open(path, "r") as file:
             dict = json.loads(file.read())
-            print("Loaded config: " + str(dict))
+            if "type" in dict:
+                config_class = get_module_config_class(dict["type"])
+
             if config_class is None:
                 config = Config(dict)
             else:
                 config = config_class(dict)
+            config.path = path
             return config
+
+    def save(self):
+        with open(self.path, "w") as file:
+            json.dump(self.config, file, indent=4)
 
     def get_property(self, name: str, default_value: str = None):
         if default_value:

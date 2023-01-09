@@ -2,12 +2,20 @@
   "type": "PackageUpdater",
   "name": "Update Wine",
   "config": {
-    "lang": "bash",
-    "script": "cd ~/aur/wine-ge-lutris && PKGEXT=.pkg.tar makepkg -f && PKGEXT=.pkg.tar paru -U --install --needed",
-    "get_latest_version_script": "curl --silent \"https://api.github.com/repos/GloriousEggroll/wine-ge-custom/releases/latest\" |  grep '\"tag_name\":' | sed -E 's/.*\"([^\"]+)\".*/\\1/' | sed -E 's/GE-Proton.-(.*)/\\1/'",
-    "get_installed_version_script": "paru -Q wine-ge-lutris | sed -E 's/.*GE\\.Proton.\\.(.*)-.*/\\1/' | grep -Po '(?<=wine-ge-lutris 1:).*(?=-.*)'",
+    "script": {
+      "script": "cd ~/aur/wine-ge-lutris && PKGEXT=.pkg.tar makepkg -f && PKGEXT=.pkg.tar paru -U --install --needed",
+      "lang": "bash",
+      "interactive": true
+    },
+    "get_latest_version_script": {
+      "script": "\"curl --silent \\\"https://api.github.com/repos/GloriousEggroll/wine-ge-custom/releases/latest\\\" |  grep '\\\"tag_name\\\":' | sed -E 's/.*\\\"([^\\\"]+)\\\".*/\\\\1/' | sed -E 's/GE-Proton.-(.*)/\\\\1/'\"",
+      "lang": "bash"
+    },
+    "get_installed_version_script": {
+      "script": "paru -Q wine-ge-lutris | sed -E 's/.*GE\\.Proton.\\.(.*)-.*/\\1/' | grep -Po '(?<=wine-ge-lutris 1:).*(?=-.*)'",
+      "lang": "bash"
+    },
     "depends_on": [
-    ],
-    "interactive": true
+    ]
   }
 }

@@ -2,7 +2,10 @@
   "type": "ScriptRunner",
   "name": "Module C",
   "config": {
-    "script": "echo C",
+    "script": {
+      "script": "echo C",
+      "lang": "bash"
+    },
     "lang": "bash",
     "depends_on": [
       "Module D",

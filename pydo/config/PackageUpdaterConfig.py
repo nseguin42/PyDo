@@ -10,6 +10,5 @@ class PackageUpdaterConfig(ScriptRunnerConfig):
     def __init__(self, config: dict):
         super().__init__(config)
 
-        self.get_installed_version_script = Script(self.config["get_installed_version_script"],
-                                                   "sh")
-        self.get_latest_version_script = Script(self.config["get_latest_version_script"], "sh")
+        self.get_installed_version_script = Script(self.config["get_installed_version_script"])
+        self.get_latest_version_script = Script(self.config["get_latest_version_script"])

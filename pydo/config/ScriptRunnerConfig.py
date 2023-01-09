@@ -8,5 +8,4 @@ class ScriptRunnerConfig(ModuleConfig):
     def __init__(self, config: dict):
         super().__init__(config)
 
-        self.script = Script(self.config["script"], self.config["lang"])
-        self.is_interactive = self.config["interactive"] if "interactive" in self.config else False
+        self.script = Script(self.config["script"])
