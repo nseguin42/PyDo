@@ -43,7 +43,7 @@ class ConfigService(IConfigService):
         data = json.dumps(config)
         path: Path = self.get_config_path(instance_name)
         writer = open(path, "w")
-        writer.write(data.decode("utf-8"))
+        writer.write(data)
         writer.close()
 
     @staticmethod
