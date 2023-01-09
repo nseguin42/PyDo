@@ -1,5 +1,8 @@
 {
   "type": "ScriptRunner",
+  "aliases": [
+    "kernel"
+  ],
   "name": "Update Kernel",
   "config": {
     "script": {

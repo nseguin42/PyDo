@@ -13,6 +13,7 @@ from pydo.utilities.WithLogging import WithLogging
 
 class Task(IConfigurable, WithLogging, metaclass=ABCMeta):
     name: str
+    aliases: Set[str]
     config: TaskConfig
     dependencies: Set[Self] = set()
     lock: threading.Lock
@@ -24,6 +25,7 @@ class Task(IConfigurable, WithLogging, metaclass=ABCMeta):
         super().__init__(config)
         self.name = config.name
         self._id = uuid.uuid4()
+        self.aliases = config.aliases
 
     @staticmethod
     def load(config: TaskConfig):

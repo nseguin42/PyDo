@@ -25,7 +25,9 @@ def main(args):
     tasks = task_loader.load_tasks()
     tasks_to_run = args.tasks
     if len(tasks_to_run) > 0:
-        tasks = list(filter(lambda m: m.name in tasks_to_run, tasks))
+        # Check if the task has an alias in the list
+        tasks = [task for task in tasks if
+                 task.name in tasks_to_run or any(alias in tasks_to_run for alias in task.aliases)]
 
     task_runner.run_all(tasks)
 

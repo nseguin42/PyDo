@@ -1,6 +1,9 @@
 {
   "type": "PackageUpdater",
   "name": "Update Wine",
+  "aliases": [
+    "wine"
+  ],
   "config": {
     "script": {
       "script": "cd ~/aur/wine-ge-lutris && PKGEXT=.pkg.tar makepkg -f && PKGEXT=.pkg.tar paru -U --install --needed",

@@ -1,6 +1,6 @@
 run:
 	export PYTHONPATH="$PWD/pydo"
-	pipenv run python pydo/main.py --config "settings/settings.json"
+	pipenv run python pydo/main.py --config "settings/settings.json" --tasks $(ARGS)
 
 test:
 	export PYTHONPATH="$PWD/pydo; $PWD/tests"
