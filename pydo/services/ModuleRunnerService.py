@@ -1,5 +1,5 @@
-from modules import Module
-from graphs.DependencyGraph import DependencyGraph
+from pydo.modules import Module
+from pydo.graphs.DependencyGraph import DependencyGraph
 from pydo.services.interfaces import IConfigService
 from pydo.services.interfaces.IConfigurableService import IConfigurableService
 
@@ -17,5 +17,5 @@ class ModuleRunnerService(IConfigurableService):
             self.run(module)
 
     def run(self, module: Module):
-        self.logger().info(f"Running module: {module.instance_name}")
+        self.logger().info(f"Running module: {module.name}")
         module.run()

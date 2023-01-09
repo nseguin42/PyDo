@@ -3,10 +3,11 @@ from pathlib import Path
 
 import orjson
 
+from pydo.config.LoggerConfig import LoggerConfig
 from pydo.config.Config import Config
 from pydo.config.ModuleConfig import ModuleConfig
 from pydo.services.interfaces.IConfigService import IConfigService
-from utilities.WithLogging import WithLogging
+from pydo.utilities.WithLogging import WithLogging
 
 
 @dataclasses.dataclass
@@ -20,10 +21,8 @@ class ConfigService(IConfigService):
         super().__init__()
         self.config_file_path = config_path
         self.config_dir_path = config_path.parent
+        self.config = Config.load(config_path)
 
-        with open(config_path, "r") as file:
-            config = orjson.loads(file.read())
-            self.config = config
         logger_config = self.get_logger_config()
         WithLogging.initialize_logger(logger_config)
 
@@ -31,7 +30,7 @@ class ConfigService(IConfigService):
         config_path_stem = Path(config_dir) / name if config_dir else name
         return (self.config_dir_path / config_path_stem).with_suffix(".json")
 
-    def get_config_dict(self, name: str, config_dir: str = None) -> dict:
+    def get_config(self, name: str, config_dir: str = None, config_class=None) -> Config:
         path: Path = self.get_config_path(name, config_dir)
         if not path.exists():
             for parent in path.parents:
@@ -39,17 +38,7 @@ class ConfigService(IConfigService):
             path.touch()
             with open(path, "w") as file:
                 file.write("{}")
-
-        with open(path, "r") as file:
-            return orjson.loads(file.read())
-
-    def get_config(self, name: str) -> Config:
-        return self.get_config_at_path(name, None)
-
-    def get_config_at_path(self, name: str, path: str = None) -> Config:
-        config = self.get_config_dict(name, path)
-        config_class = self.get_config_class(config, name)
-        return config_class(config)
+        return Config.load(path, config_class)
 
     def save_config(self, config: Config, instance_name: str, config_dir: str = None) -> None:
         data = orjson.dumps(config, orjson.OPT_INDENT_2)
@@ -58,7 +47,8 @@ class ConfigService(IConfigService):
         writer.write(data.decode("utf-8"))
         writer.close()
 
-    def get_config_class(self, config: dict, name: str):
+    @staticmethod
+    def get_config_class(config: dict, name: str):
         try:
             class_name = config["type"] + "Config"
         except KeyError:
@@ -70,8 +60,8 @@ class ConfigService(IConfigService):
     def get_enabled_modules(self) -> list[str]:
         return self.config["enabled_modules"]
 
-    def get_logger_config(self):
-        return self.get_config("LoggerConfig")
+    def get_logger_config(self) -> LoggerConfig:
+        return self.get_config("LoggerConfig", config_class=LoggerConfig)
 
     def get_modules_dir(self) -> Path:
         return self.config_dir_path / "modules"

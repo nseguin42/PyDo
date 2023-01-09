@@ -1,7 +1,9 @@
 run:
-	pipenv run python pydo/main.py --config "settings/settings.json" --modules "$(ARGS)"
+	export PYTHONPATH="$PWD/pydo"
+	pipenv run python pydo/main.py --config "settings/settings.json"
 
 test:
+	export PYTHONPATH="$PWD/pydo; $PWD/tests"
 	pipenv run python -m unittest tests/test_modules.py
 
 clean:

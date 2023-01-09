@@ -1,8 +1,7 @@
+import json
 from pathlib import Path
 
-from orjson import orjson
-
-from modules.Module import Module
+from pydo.modules.Module import Module
 from pydo.services.interfaces.IConfigService import IConfigService
 from pydo.services.interfaces.IConfigurableService import IConfigurableService
 
@@ -30,15 +29,12 @@ class ModuleLoaderService(IConfigurableService):
         return self.modules
 
     def load_module_from_file(self, file_path: Path) -> Module:
-        data = orjson.loads(file_path.read_text())
-        module_name = data["name"]
-        module_type = data["type"]
+        data = json.loads(file_path.read_text())
         module_config = self.config_service.get_module_config(data)
-        module_class = get_class(module_type)
-        module = module_class(module_name, module_config)
+        module = Module.load(module_config)
         return module
 
     def register_dependencies(self):
         for module in self.modules:
             module.dependencies = {modules for modules in self.modules if
-                                   modules.instance_name in module.config.get_dependencies()}
+                                   modules.name in module.config.get_dependencies()}

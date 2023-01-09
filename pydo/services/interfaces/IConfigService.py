@@ -14,14 +14,6 @@ class IConfigService(IService, metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def get_config_at_path(self, instance_name: str, path: str) -> Config:
-        pass
-
-    @abstractmethod
-    def get_config_from_file(self, file_path: str) -> Config:
-        pass
-
-    @abstractmethod
     def save_config(self, config: Config, instance_name: str, config_dir: str = None) -> None:
         pass
 

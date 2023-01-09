@@ -1,15 +1,23 @@
 import threading
 import uuid
 from abc import ABCMeta, abstractmethod
+from modulefinder import Module
 from typing import Self, Set
 from uuid import UUID
 
 from pydo.config.interfaces.IConfigurable import IConfigurable
 from pydo.config.ModuleConfig import ModuleConfig
-from utilities.WithLogging import WithLogging
+from pydo.utilities.WithLogging import WithLogging
+
+
+def get_class(name: str):
+    if name:
+        module = __import__(f"pydo.modules.{name}", fromlist=[name])
+        return getattr(module, name)
 
 
 class Module(IConfigurable, WithLogging, metaclass=ABCMeta):
+    name: str
     config: ModuleConfig
     dependencies: Set[Self] = set()
     lock: threading.Lock
@@ -17,11 +25,18 @@ class Module(IConfigurable, WithLogging, metaclass=ABCMeta):
 
     @abstractmethod
     def __init__(self,
-                 instance_name: str,
                  config: ModuleConfig):
-        super().__init__(config, instance_name)
+        super().__init__(config)
+        self.name = config.name
         self._id = uuid.uuid4()
-        self.lock = threading.Lock()
+
+    @staticmethod
+    def load(config: ModuleConfig) -> Module:
+        if config.type:
+            module_class = get_class(config.type)
+            return module_class(config)
+        else:
+            raise Exception("Module type not specified")
 
     def run(self):
         pass
@@ -30,11 +45,10 @@ class Module(IConfigurable, WithLogging, metaclass=ABCMeta):
         return self._id.hex[:8]
 
     def __repr__(self):
-        return "Module: " + self.instance_name + " (" + str(self.get_short_id() + ")")
+        return "Module: " + self.name + " (" + str(self.get_short_id() + ")")
 
     def __eq__(self, other):
         return self._id == other._id
 
     def __hash__(self):
         return hash(self._id)
-

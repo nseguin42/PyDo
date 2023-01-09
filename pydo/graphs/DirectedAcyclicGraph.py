@@ -2,7 +2,7 @@ from typing import Generator, Set
 
 import nographs
 
-from graphs.interfaces import INode
+from pydo.graphs.interfaces import INode
 
 
 class DirectedAcyclicGraph:

@@ -11,4 +11,4 @@ class FakeModuleRunnerService(IModuleRunnerService):
         super().__init__(config_service)
 
     def run(self, module: Module):
-        self.logger().info(f"Running module: {module.instance_name}")
+        self.logger().info(f"Running module: {module.name}")

@@ -2,7 +2,7 @@ import asyncio
 import subprocess
 
 from pydo.config.ScriptRunnerConfig import ScriptRunnerConfig
-from modules.Module import Module
+from pydo.modules.Module import Module
 from pydo.models.Script import Script
 
 
@@ -10,9 +10,8 @@ class ScriptRunner(Module):
     config: ScriptRunnerConfig
     script: Script
 
-    def __init__(self,
-                 instance_name: str, config: ScriptRunnerConfig):
-        super().__init__(instance_name, config)
+    def __init__(self, config: ScriptRunnerConfig):
+        super().__init__(config)
         self.script = config.script
 
     def run(self):

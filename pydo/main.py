@@ -14,16 +14,19 @@ from pydo.services.ModuleRunnerService import ModuleRunnerService
 
 def main(args):
     print(f"args: {args}")
-    modules_to_run = args.modules
 
     config_path = Path(args.config)
-    config_service: IConfigService = ConfigService(config_path)
+    print(f"config_path: {config_path.absolute()}")
 
+    config_service: IConfigService = ConfigService(config_path)
     module_runner = ModuleRunnerService(config_service)
     module_loader = ModuleLoaderService(config_service)
+
     modules = module_loader.load_modules()
+    modules_to_run = args.modules
     if len(modules_to_run) > 0:
-        modules = list(filter(lambda m: m.instance_name in modules_to_run, modules))
+        modules = list(filter(lambda m: m.name in modules_to_run, modules))
+
     module_runner.run_all(modules)
 
 
