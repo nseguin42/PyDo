@@ -5,7 +5,7 @@
     "lang": "bash",
     "script": "cd ~/aur/wine-ge-lutris && PKGEXT=.pkg.tar makepkg -f && PKGEXT=.pkg.tar paru -U --install --needed",
     "get_latest_version_script": "curl --silent \"https://api.github.com/repos/GloriousEggroll/wine-ge-custom/releases/latest\" |  grep '\"tag_name\":' | sed -E 's/.*\"([^\"]+)\".*/\\1/' | sed -E 's/GE-Proton.-(.*)/\\1/'",
-    "get_current_version_script": "paru -Q wine-ge-lutris | sed -E 's/.*GE\\.Proton.\\.(.*)-.*/\\1/' | grep -Po '(?<=wine-ge-lutris 1:).*(?=-.*)'",
+    "get_installed_version_script": "paru -Q wine-ge-lutris | sed -E 's/.*GE\\.Proton.\\.(.*)-.*/\\1/' | grep -Po '(?<=wine-ge-lutris 1:).*(?=-.*)'",
     "dependsOn": [
     ],
     "interactive": true

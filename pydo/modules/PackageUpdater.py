@@ -19,7 +19,7 @@ class PackageUpdater(ScriptRunner, Module, WithLogging):
             self.run_script(self.script)
 
     def get_current_version(self):
-        script = self.config.get_current_version_script
+        script = self.config.get_installed_version_script
         return self.run_script(script)
 
     def get_latest_version(self):
