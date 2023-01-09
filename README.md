@@ -4,8 +4,6 @@ A flexible script for doing tasks with dependencies.
 
 Currently in pre-pre-alpha. Probably doesn't work without some bandaid fixes. Everything will change without notice.
 
----
-
 ## Requirements
 
 - Python 3.11+
