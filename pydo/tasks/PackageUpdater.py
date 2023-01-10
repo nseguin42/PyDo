@@ -1,6 +1,6 @@
-from tasks.Task import Task
 from pydo.config.PackageUpdaterConfig import PackageUpdaterConfig
 from pydo.tasks.ScriptRunner import ScriptRunner
+from tasks.Task import Task
 from utilities.WithLogging import WithLogging
 
 

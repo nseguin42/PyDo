@@ -1,5 +1,4 @@
 import asyncio
-import subprocess
 
 from pydo.config.Colors import Colors
 from pydo.config.ScriptRunnerConfig import ScriptRunnerConfig

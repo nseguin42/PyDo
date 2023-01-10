@@ -1,8 +1,8 @@
 from abc import ABCMeta, abstractmethod
 from typing import List
 
-from tasks.Task import Task
 from pydo.services.interfaces.IConfigurableService import IConfigurableService
+from tasks.Task import Task
 
 
 class ITaskRunnerService(IConfigurableService, metaclass=ABCMeta):

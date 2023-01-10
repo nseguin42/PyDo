@@ -1,9 +1,9 @@
 from pathlib import Path
 
 from pydo.config.Config import Config
-from pydo.tasks.Task import Task
 from pydo.services.interfaces.IConfigService import IConfigService
 from pydo.services.interfaces.IConfigurableService import IConfigurableService
+from pydo.tasks.Task import Task
 
 
 class TaskLoaderService(IConfigurableService):
@@ -30,4 +30,4 @@ class TaskLoaderService(IConfigurableService):
     def register_dependencies(self):
         for task in self.tasks:
             task.dependencies = {tasks for tasks in self.tasks if
-                                   tasks.name in task.config.get_dependencies()}
+                                 tasks.name in task.config.get_dependencies()}

@@ -1,5 +1,5 @@
-from tasks.Task import Task
 from pydo.config.TaskConfig import TaskConfig
+from tasks.Task import Task
 
 EmptyConfig: TaskConfig = TaskConfig({})
 

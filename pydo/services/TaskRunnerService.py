@@ -1,8 +1,8 @@
 from pydo.config.Colors import Colors
 from pydo.graphs.DependencyGraph import DependencyGraph
-from pydo.tasks import Task
 from pydo.services.interfaces import IConfigService
 from pydo.services.interfaces.IConfigurableService import IConfigurableService
+from pydo.tasks import Task
 
 
 class TaskRunnerService(IConfigurableService):

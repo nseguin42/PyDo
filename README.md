@@ -25,8 +25,8 @@ default: `$CONFIG = pydo/settings`).
 Each task that PyDo can run is a task. Tasks are defined in the `$CONFIG/tasks` directory.
 Each task is defined by a single .json file with the minimum syntax:
 
-| Property | Type   | Description             | Required | Default |
-|:---------|:-------|:------------------------|:---------|:--------|
+| Property | Type   | Description           | Required | Default |
+|:---------|:-------|:----------------------|:---------|:--------|
 | name     | string | The name of the task. | Yes      |         |
 | type     | string | The type of the task. | Yes      |         |
 
