@@ -1,5 +1,5 @@
 {
-  "type": "ScriptRunner",
+  "type": "PackageUpdater",
   "aliases": [
     "kernel"
   ],
@@ -9,6 +9,14 @@
       "script": "cd ~/kernel/linux-tkg && (yes | makepkg -sif)",
       "lang": "bash",
       "interactive": true
+    },
+    "get_latest_version_script": {
+      "script": "curl --silent \"https://api.github.com/repos/Frogging-Family/linux-tkg/releases/latest\" |  grep '\"tag_name\":' | sed -E 's/.*\"v([^\"]+)\".*/\\1/'",
+      "lang": "bash"
+    },
+    "get_installed_version_script": {
+      "script": "pacman -Qi linux-tkg-cfs | grep Version | sed -E 's/.*: (.*)-.*?/\\1/'",
+      "lang": "bash"
     },
     "depends_on": [
     ]
